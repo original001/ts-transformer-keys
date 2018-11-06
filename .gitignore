@@ -1,5 +1,2 @@
-*.js
-!test/fileTransformation/*.js
-!test/compileMain.js
 npm-debug.log*
 node_modules
