@@ -21,7 +21,8 @@ function visitNode(node: ts.Node, program: ts.Program): ts.Node {
   }
   const type = typeChecker.getTypeFromTypeNode(node.typeArguments[0]);
   const properties = typeChecker.getPropertiesOfType(type);
-  return ts.createArrayLiteral(properties.map(property => ts.createLiteral(property.name)));
+  return ts.createStringLiteral(properties.reduce((acc, prop) => `${acc}/:${prop.name}`, ''))
+  // return ts.createArrayLiteral(properties.map(property => ts.createLiteral(property.name)));
 }
 
 const indexTs = path.join(__dirname, 'index.ts');
